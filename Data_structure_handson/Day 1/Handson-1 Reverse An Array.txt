@@ -4,11 +4,7 @@ import java.security.*;
 import java.text.*;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.function.*;
 import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
 class Result {
 
@@ -21,8 +17,7 @@ class Result {
 
     public static List<Integer> reverseArray(List<Integer> a) {
     // Write your code here
- Collections.reverse(a);
- return a;
+
     }
 
 }
@@ -34,18 +29,26 @@ public class Solution {
 
         int arrCount = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
-            .collect(toList());
+        String[] arrTemp = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        List<Integer> arr = new ArrayList<>();
+
+        for (int i = 0; i < arrCount; i++) {
+            int arrItem = Integer.parseInt(arrTemp[i]);
+            arr.add(arrItem);
+        }
 
         List<Integer> res = Result.reverseArray(arr);
 
-        bufferedWriter.write(
-            res.stream()
-                .map(Object::toString)
-                .collect(joining(" "))
-            + "\n"
-        );
+        for (int i = 0; i < res.size(); i++) {
+            bufferedWriter.write(String.valueOf(res.get(i)));
+
+            if (i != res.size() - 1) {
+                bufferedWriter.write(" ");
+            }
+        }
+
+        bufferedWriter.newLine();
 
         bufferedReader.close();
         bufferedWriter.close();
