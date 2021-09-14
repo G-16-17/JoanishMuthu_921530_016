@@ -1,0 +1,48 @@
+C:\Users\Joanish>docker pull nginx:1.17.5
+1.17.5: Pulling from library/nginx
+8d691f585fa8: Pull complete
+5b07f4e08ad0: Pull complete
+abc291867bca: Pull complete
+Digest: sha256:922c815aa4df050d4df476e92daed4231f466acc8ee90e0e774951b0fd7195a4
+Status: Downloaded newer image for nginx:1.17.5
+docker.io/library/nginx:1.17.5
+
+C:\Users\Joanish>
+C:\Users\Joanish>
+C:\Users\Joanish>
+C:\Users\Joanish>docker image ls
+REPOSITORY                           TAG                                                     IMAGE ID       CREATED         SIZE
+nginx                                latest                                                  ad4c705f24d3   4 days ago      133MB
+python                               latest                                                  a5210955ee89   6 days ago      911MB
+docker/desktop-kubernetes            kubernetes-v1.21.4-cni-v0.8.5-critools-v1.17.0-debian   5efbfa3e779a   4 weeks ago     299MB
+k8s.gcr.io/kube-apiserver            v1.21.4                                                 cef7457710b1   4 weeks ago     126MB
+k8s.gcr.io/kube-controller-manager   v1.21.4                                                 2c25d0f89db7   4 weeks ago     120MB
+k8s.gcr.io/kube-scheduler            v1.21.4                                                 993d3ec13feb   4 weeks ago     50.6MB
+docker/desktop-git-helper            5a4fca126aadcd3f6cc3a011aa991de982ae7000                efe2d67c403b   6 weeks ago     44.2MB
+nginx                                1.17.5                                                  540a289bab6c   23 months ago   126MB
+
+C:\Users\Joanish>docker run --name my-nginx -d -p 8085:80 -v D:\docker l nginx:1.17.5
+Unable to find image 'l:latest' locally
+docker: Error response from daemon: pull access denied for l, repository does not exist or may require 'docker login': denied: requested access to the resource is denied.
+See 'docker run --help'.
+
+C:\Users\Joanish>
+C:\Users\Joanish>docker run --name my-nginx -d -p 8085:80 -v D:\docker nginx:1.17.5
+8d813395ced02bc227dc8913f188f8559c46914a9b444fcc32c14c8df268cbd3
+
+C:\Users\Joanish>docker container ls
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+8d813395ced0   nginx:1.17.5   "nginx -g 'daemon of…"   15 seconds ago   Up 14 seconds   0.0.0.0:8085->80/tcp, :::8085->80/tcp   my-nginx
+
+C:\Users\Joanish>docker stop my-nginx
+my-nginx
+
+C:\Users\Joanish>docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+C:\Users\Joanish>docker container ls -a
+CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS                       PORTS     NAMES
+8d813395ced0   nginx:1.17.5    "nginx -g 'daemon of…"   39 seconds ago   Exited (0) 13 seconds ago              my-nginxb5ed89a2e7cd   python:latest   "python3"                15 minutes ago   Exited (137) 3 minutes ago             elated_noether
+
+C:\Users\Joanish>
+
